@@ -6,7 +6,8 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class PaymentMethodResponse {
+public class PaymentMethodResponse 
+{
     private Long id;
     private Long userId;
     private String type;
