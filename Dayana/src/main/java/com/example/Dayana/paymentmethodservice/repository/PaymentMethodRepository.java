@@ -17,6 +17,8 @@ public interface PaymentMethodRepository extends JpaRepository<PaymentMethod, Lo
     void clearDefaultMethods(Long userId);
     
     PaymentMethod findByUserIdAndIsDefault(Long userId, Boolean isDefault);
+
+
 }
 
 
