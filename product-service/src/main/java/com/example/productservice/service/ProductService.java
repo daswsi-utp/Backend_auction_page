@@ -1,4 +1,4 @@
-package main.java.com.example.productservice.service;
+package com.example.productservice.service;
 
 import com.example.productservice.dto.ProductRequest;
 import com.example.productservice.dto.ProductResponse;

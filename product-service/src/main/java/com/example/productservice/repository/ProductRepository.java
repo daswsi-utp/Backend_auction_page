@@ -1,6 +1,8 @@
-package main.java.com.example.productservice.repository;
+package com.example.productservice.repository;
 
 import com.example.productservice.model.Product;
+import com.example.productservice.model.ProductStatus;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 

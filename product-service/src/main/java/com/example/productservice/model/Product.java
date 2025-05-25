@@ -1,5 +1,7 @@
 package com.example.productservice.model;
 
+import java.math.BigDecimal;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -9,6 +11,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

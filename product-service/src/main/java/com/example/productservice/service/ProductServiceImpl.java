@@ -1,4 +1,4 @@
-package main.java.com.example.productservice.service;
+package com.example.productservice.service;
 
 import com.example.productservice.dto.ProductRequest;
 import com.example.productservice.dto.ProductResponse;
@@ -6,7 +6,6 @@ import com.example.productservice.exception.ProductNotFoundException;
 import com.example.productservice.model.Product;
 import com.example.productservice.model.ProductStatus;
 import com.example.productservice.repository.ProductRepository;
-import com.example.productservice.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
