@@ -5,7 +5,8 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class PaymentMethodRequest {
+public class PaymentMethodRequest 
+{
     private Long userId;
     private String type;
     private String details;
