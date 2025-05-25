@@ -5,6 +5,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+
 public class PaymentMethodRequest 
 {
     private Long userId;
@@ -13,3 +14,5 @@ public class PaymentMethodRequest
     private Boolean isDefault;
     private Boolean visible;
 }
+
+
