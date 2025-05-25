@@ -16,3 +16,4 @@ public class PaymentMethodResponse
     private Boolean isDefault;
     private Boolean visible;
 }
+
