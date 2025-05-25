@@ -12,8 +12,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/payment-methods")
 @RequiredArgsConstructor
-public class PaymentMethodController 
-{
+public class PaymentMethodController {
+    
     private final PaymentMethodService paymentMethodService;
 
     @PostMapping
@@ -43,6 +43,16 @@ public class PaymentMethodController
         paymentMethodService.deletePaymentMethod(id);
     }
 
-    
+    @PatchMapping("/{userId}/default/{methodId}")
+    public PaymentMethodResponse setDefaultPaymentMethod(
+            @PathVariable Long userId,
+            @PathVariable Long methodId) {
+        return paymentMethodService.setDefaultPaymentMethod(userId, methodId);
+    }
+
+    @GetMapping("/user/{userId}/default")
+    public PaymentMethodResponse getDefaultPaymentMethod(@PathVariable Long userId) {
+        return paymentMethodService.getDefaultPaymentMethod(userId);
+    }
 
 }
