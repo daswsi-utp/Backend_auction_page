@@ -54,4 +54,5 @@ public class PaymentMethodController
     public PaymentMethodResponse getDefaultPaymentMethod(@PathVariable Long userId) {
         return paymentMethodService.getDefaultPaymentMethod(userId);
     }
+
 }
