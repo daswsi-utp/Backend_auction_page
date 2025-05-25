@@ -12,8 +12,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/payment-methods")
 @RequiredArgsConstructor
-public class PaymentMethodController {
-    
+public class PaymentMethodController 
+{
     private final PaymentMethodService paymentMethodService;
 
     @PostMapping
