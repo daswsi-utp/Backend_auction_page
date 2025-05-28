@@ -1,21 +1,37 @@
 package com.example.Leidy.service;
 
+import me.xdrop.fuzzywuzzy.FuzzySearch;
 import org.springframework.stereotype.Service;
+
+import java.util.Map;
 
 @Service
 public class ChatbotService {
 
-    public String getResponse(String userMessage) {
-        String msg = userMessage.toLowerCase();
+    private final Map<String, String> respuestas = Map.of(
+        "como participar", "Para participar, inicia sesión, selecciona un producto y haz tu puja.",
+        "ver productos", "Puedes ver todos los productos disponibles en la sección de subastas.",
+        "pujar", "Haz clic en el botón de pujar e ingresa tu monto.",
+        "oferta", "Haz clic en el botón de pujar e ingresa tu monto.",
+        "historial", "Tu historial de pujas está en tu perfil."
+    );
 
-        if (msg.contains("cómo") && msg.contains("participar")) {
-            return "Para participar, inicia sesión, selecciona un producto y haz tu puja.";
-        } else if (msg.contains("producto")) {
-            return "Puedes ver todos los productos disponibles en la sección de subastas.";
-        } else if (msg.contains("pujar") || msg.contains("oferta")) {
-            return "Haz clic en el botón de pujar e ingresa tu monto.";
-        } else if (msg.contains("historial")) {
-            return "Tu historial de pujas está en tu perfil.";
+    public String getResponse(String userMessage) {
+        String userInput = userMessage.toLowerCase();
+
+        String mejorCoincidencia = null;
+        int mejorPuntaje = 0;
+
+        for (String clave : respuestas.keySet()) {
+            int puntaje = FuzzySearch.partialRatio(userInput, clave);
+            if (puntaje > mejorPuntaje) {
+                mejorPuntaje = puntaje;
+                mejorCoincidencia = clave;
+            }
+        }
+
+        if (mejorPuntaje >= 70 && mejorCoincidencia != null) {
+            return respuestas.get(mejorCoincidencia);
         } else {
             return "No entendí tu pregunta 😕. ¿Puedes reformularla?";
         }
