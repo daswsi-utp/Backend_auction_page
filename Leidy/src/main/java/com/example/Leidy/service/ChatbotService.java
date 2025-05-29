@@ -17,20 +17,24 @@ public class ChatbotService {
     );
 
     public String getResponse(String userMessage) {
-        String userInput = userMessage.toLowerCase();
+        if (userMessage == null || userMessage.trim().length() < 4) {
+            return "Podrías darme un poco más de contexto para ayudarte 😊";
+        }
+
+        String userInput = userMessage.toLowerCase().trim();
 
         String mejorCoincidencia = null;
         int mejorPuntaje = 0;
 
         for (String clave : respuestas.keySet()) {
-            int puntaje = FuzzySearch.partialRatio(userInput, clave);
+            int puntaje = FuzzySearch.tokenSetRatio(userInput, clave);
             if (puntaje > mejorPuntaje) {
                 mejorPuntaje = puntaje;
                 mejorCoincidencia = clave;
             }
         }
 
-        if (mejorPuntaje >= 70 && mejorCoincidencia != null) {
+        if (mejorPuntaje >= 75 && mejorCoincidencia != null) {
             return respuestas.get(mejorCoincidencia);
         } else {
             return "No entendí tu pregunta 😕. ¿Puedes reformularla?";
